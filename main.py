@@ -3,9 +3,11 @@ import cv2
 import time
 import datetime
 from datetime import datetime
-# cap = cv2.VideoCapture(0) 
-# _, image = cap.read()
-image = cv2.imread("fix.png")
+cap = cv2.VideoCapture('http://192.168.1.170:4747/mjpegfeed')
+
+
+_, image = cap.read()
+# image = cv2.imread("fix.png")
 height, width, layers = image.shape
 size = (width,height)
 print(size)
@@ -15,8 +17,8 @@ out = cv2.VideoWriter(str(datetime.now())+'.avi',
 fps = 20
 ptime = time.time()
 while True:
-    # _, image = cap.read()
-    image = cv2.imread("fix.png")
+    _, image = cap.read()
+    # image = cv2.imread("fix.png")
 
     barcodes = pyzbar.decode(image)
    
